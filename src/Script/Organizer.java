@@ -11,7 +11,7 @@ public class Organizer {
     }
 
     private void createFolder(String name) {
-        File folder = new File(name);
+        File folder = new File(name+"Bundle");
         if (!folder.exists()) {
             folder.mkdirs();
             System.out.println("Folder Created Successfully");
