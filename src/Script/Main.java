@@ -4,7 +4,7 @@ public class Main {
 
     public static boolean verbose = false;
     public static void main(String[] args) {
-        Setup setup = new Setup(); // compile files, java docs and create manifest.txt //todo doc problems if more than one folder, maybe compile too
+        Setup setup = new Setup(); // create manifest.txt
         try {
             Thread.sleep(500);
         } catch (Exception e) {

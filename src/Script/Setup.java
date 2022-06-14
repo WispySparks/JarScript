@@ -2,7 +2,6 @@ package Script;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.file.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,28 +14,6 @@ public class Setup {
 
     Setup() {
         createManifest();
-        compileFiles();
-        createDocs();
-    }
-
-    private void compileFiles() {
-        ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c javac -cp src src\\" + packageName + "\\*.java -d bin");
-        try {
-            builder.start();
-            System.out.println("Files Compiled Successfully");
-        } catch (IOException e) {
-            System.out.println("Compile Exception: " + e);
-        }
-    }
-
-    private void createDocs() {
-        ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c javadoc src\\"+ packageName +"\\*.java -d docs");
-        try {
-            builder.start();
-            System.out.println("Docs Created Successfully");
-        } catch (IOException e) {
-            System.out.println("Docs Exception: " + e);
-        }
     }
 
     private void createManifest() {     // creates the manifest document
