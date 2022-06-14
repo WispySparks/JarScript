@@ -28,7 +28,6 @@ public class Runtime {
                     deps.add(line.substring(jar.length()+4));
                 }
             }
-            System.out.println("Dependencies Added");
             String libs = "";
             for (String string : deps) {
                 if (deps.get(deps.size()-1) != string) {
@@ -38,6 +37,7 @@ public class Runtime {
                     libs += string;
                 }
             }
+            System.out.println("Dependencies: " + libs);
             File runtime = new File(name+"-runtime");
             if (!runtime.exists()) {
                 builder2 = new ProcessBuilder("cmd.exe", "/c jlink --output " + pname + " --add-modules " + libs);

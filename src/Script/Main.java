@@ -2,7 +2,7 @@ package Script;
 
 public class Main {
     public static void main(String[] args) {
-        Setup setup = new Setup(); // compile files, java docs and create manifest.txt
+        Setup setup = new Setup(); // compile files, java docs and create manifest.txt //todo doc problems if more than one folder, maybe compile too
         try {
             Thread.sleep(500);
         } catch (Exception e) {
@@ -22,7 +22,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e);
         }
-        new Runtime(jarName, setup.topName(), path); // create runtime for jar file
+        new Runtime(jarName, setup.topName(), path); // create runtime for jar file //Todo runtime still isnt created sometimes
         try {
             Thread.sleep(500);
         } catch (Exception e) {
