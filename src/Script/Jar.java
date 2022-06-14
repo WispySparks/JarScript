@@ -17,8 +17,9 @@ public class Jar {
             ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c jar cvfm " +  "\"" + jarFile.getAbsolutePath() + "\"" + " resources\\manifest.txt -C bin . resources");
             try {
                 builder.start();    // create the jar file
+                System.out.println("Jar Created Successfully");
             } catch (IOException e) {
-                System.out.println(e);
+                System.out.println("Jar Exception: " + e);
             }
         }
     }

@@ -23,8 +23,9 @@ public class Setup {
         ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c javac -cp src src\\" + packageName + "\\*.java -d bin");
         try {
             builder.start();
+            System.out.println("Files Compiled Successfully");
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println("Compile Exception: " + e);
         }
     }
 
@@ -32,8 +33,9 @@ public class Setup {
         ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c javadoc src\\"+ packageName +"\\*.java -d docs");
         try {
             builder.start();
+            System.out.println("Docs Created Successfully");
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println("Docs Exception: " + e);
         }
     }
 
@@ -48,14 +50,14 @@ public class Setup {
             .collect(Collectors.toList()); // searches for the main file
             walk.close();
             File main = new File(result.get(0)); // file representation of the main.java
-            System.out.println(main.getAbsolutePath());
             packageName = main.getParentFile().getName(); // get the name of the package from the parent of the main.java file
             manifest.createNewFile(); // create the manifest
             FileWriter writer = new FileWriter(manifest); // write everything to it
-            writer.write("Manifest-Version: 1.0" + "\r\n" + "Class-Path: ." + "\r\n" + "Main-Class: src." + packageName + ".Main" + "\r\n");
+            writer.write("Manifest-Version: 1.0" + "\r\n" + "Class-Path: ." + "\r\n" + "Main-Class: " + packageName + ".Main" + "\r\n");
             writer.close();
+            System.out.println("Manifest Created Successfully");
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Manifest Exception: " + e);
         }
     }
 

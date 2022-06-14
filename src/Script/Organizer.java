@@ -14,6 +14,7 @@ public class Organizer {
         File folder = new File(name);
         if (!folder.exists()) {
             folder.mkdirs();
+            System.out.println("Folder Created Successfully");
         }
         path = folder.getAbsolutePath();
     }

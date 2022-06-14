@@ -24,11 +24,11 @@ public class Runtime {
             BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 if (line.contains(jar + " -> ")) {
                     deps.add(line.substring(jar.length()+4));
                 }
             }
+            System.out.println("Dependencies Added");
             String libs = "";
             for (String string : deps) {
                 if (deps.get(deps.size()-1) != string) {
@@ -42,9 +42,10 @@ public class Runtime {
             if (!runtime.exists()) {
                 builder2 = new ProcessBuilder("cmd.exe", "/c jlink --output " + pname + " --add-modules " + libs);
                 proc = builder2.start();
+                System.out.println("Runtime Created Successfully");
             }
         } catch (IOException e) {
-            System.out.println("Exception:  " + e);
+            System.out.println("Runtime Exception: " + e);
         }
     }
 }

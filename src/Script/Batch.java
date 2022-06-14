@@ -18,9 +18,10 @@ public class Batch {
                 writer.write("ECHO OFF" + "\r\n");
                 writer.write("start cmd /c " + batchPath + " -jar " + projName +".jar");
                 writer.close();
+                System.out.println("Batch File Created Successfully");
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Batch Exception: " + e);
         }
     }
 
