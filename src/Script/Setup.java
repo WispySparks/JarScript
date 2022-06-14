@@ -43,9 +43,9 @@ public class Setup {
         File manifest = new File("resources/manifest.txt");
         try {
             top = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile();
-            //File src = new File(top.getAbsolutePath()+"\\src\\"); //gets the path to where the main file would be located
-            //Stream<Path> walk = Files.walk(Paths.get(src.getAbsolutePath()));
-            Stream<Path> walk = Files.walk(Paths.get("C:\\Users\\wispy\\Programming Projects\\Java\\JarScript\\src"));
+            File src = new File(top.getAbsolutePath()+"\\src\\"); //gets the path to where the main file would be located
+            Stream<Path> walk = Files.walk(Paths.get(src.getAbsolutePath()));
+            // Stream<Path> walk = Files.walk(Paths.get("C:\\Users\\wispy\\Programming Projects\\Java\\JarScript\\src"));
             List<String> result = walk.filter(p -> !Files.isDirectory(p)).map(p -> p.toString()).filter(f -> f.contains("Main.java"))
             .collect(Collectors.toList()); // searches for the main file
             walk.close();

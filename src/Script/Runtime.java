@@ -30,12 +30,15 @@ public class Runtime {
             }
             String libs = "";
             for (String string : deps) {
-                if (deps.get(deps.size()-1) != string) {
-                    libs += string + ",";
+                if (string != "not found") {
+                    if (deps.get(deps.size()-1) != string) {
+                        libs += string + ",";
+                    }
+                    else {
+                        libs += string;
+                    }
                 }
-                else {
-                    libs += string;
-                }
+                System.out.println("Some Dependencies weren't Found");
             }
             System.out.println("Dependencies: " + libs);
             File runtime = new File(name+"-runtime");
