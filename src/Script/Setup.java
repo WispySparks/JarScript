@@ -48,13 +48,12 @@ public class Setup {
             .collect(Collectors.toList()); // searches for the main file
             walk.close();
             File main = new File(result.get(0)); // file representation of the main.java
+            System.out.println(main.getAbsolutePath());
             packageName = main.getParentFile().getName(); // get the name of the package from the parent of the main.java file
-            if (!manifest.exists()) {
-                manifest.createNewFile(); // create the manifest
-                FileWriter writer = new FileWriter(manifest); // write everything to it
-                writer.write("Manifest-Version: 1.0" + "\r\n" + "Class-Path: ." + "\r\n" + "Main-Class: src." + packageName + ".Main" + "\r\n");
-                writer.close();
-            }
+            manifest.createNewFile(); // create the manifest
+            FileWriter writer = new FileWriter(manifest); // write everything to it
+            writer.write("Manifest-Version: 1.0" + "\r\n" + "Class-Path: ." + "\r\n" + "Main-Class: src." + packageName + ".Main" + "\r\n");
+            writer.close();
         } catch (Exception e) {
             System.out.println(e);
         }
