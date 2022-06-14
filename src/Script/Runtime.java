@@ -11,8 +11,7 @@ public class Runtime {
     private ProcessBuilder builder;
 
     Runtime (String jar, String projName, String path) {
-        builder = new ProcessBuilder("cmd.exe", "/c jdeps " +  "\"" + path + "\\" + jar + "\"");
-        //builder = new ProcessBuilder("cmd.exe", "/c jdeps");
+        builder = new ProcessBuilder("cmd.exe", "/c jdeps " +  "\"" + path + "\\" + jar);
         createRuntime(jar, projName, path);
     }
 
@@ -24,9 +23,7 @@ public class Runtime {
             Process proc = builder.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line;
-            System.out.println(builder.command());
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 if (line.contains(jar + " -> ")) {
                     deps.add(line.substring(jar.length()+4));
                 }
