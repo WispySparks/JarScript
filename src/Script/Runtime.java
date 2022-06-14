@@ -24,6 +24,7 @@ public class Runtime {
             BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 if (line.contains(jar + " -> ")) {
                     deps.add(line.substring(jar.length()+4));
                 }
@@ -43,7 +44,7 @@ public class Runtime {
                 proc = builder2.start();
             }
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println("Exception:  " + e);
         }
     }
 }

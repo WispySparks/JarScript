@@ -10,7 +10,7 @@ public class Batch {
 
     private void createBatch(String projName, String path) {
         File batch = new File(path + "\\" + projName + ".bat");
-        String batchPath = "\"%~dp0\\"+projName+"-runtime\\bin\\java.exe\"";
+        String batchPath = "\"%~dp0"+projName+"-runtime\\bin\\java.exe\"";
         try {
             if (!batch.exists()) {
                 batch.createNewFile();
