@@ -1,6 +1,7 @@
-package Script;
+package main.java.Script;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Batch {
     

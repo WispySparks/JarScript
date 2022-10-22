@@ -1,7 +1,8 @@
-package Script;
+package main.java.Script;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 
 public class Jar {
 
@@ -13,15 +14,17 @@ public class Jar {
 
     private void createJar(String path, String name) {
         jarFile = new File(path + "\\" + name + ".jar"); // make a jar file to test if it already exists
+        System.out.println();
         if (!jarFile.exists()) {
-            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c jar cvfm " +  "\"" + jarFile.getAbsolutePath() + "\"" + " resources\\manifest.txt -C bin . resources");
+            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c jar cvf " +  "\"" + jarFile.getAbsolutePath()
+             + "\"" + " -C bin . resources");
+            builder.redirectError(Redirect.INHERIT);
             try {
                 builder.start();    // create the jar file
-                System.out.println("Jar Created Successfully");
             } catch (IOException e) {
-                System.out.println("Jar Exception: " + e);
+                e.printStackTrace();
             }
-        }
+        } 
     }
 
     public String getPath() {
