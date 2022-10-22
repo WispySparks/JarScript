@@ -21,6 +21,7 @@ public class Organizer {
         File folder = new File(parentDirectory.getName()+"Bundle");
         if (!folder.exists()) {
             folder.mkdirs();
+            while(!folder.exists());
         }
         path = folder.getAbsolutePath();
     }
