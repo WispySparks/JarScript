@@ -7,7 +7,7 @@ public class Main {
         String folderPath = organizer.getPath(); // get the path of the folder
         String folderName = organizer.getName(); // get name of project
         new Jar(folderPath, folderName); // create jar file
-        new Runtime(folderName + ".jar", folderName, folderPath); // create runtime for jar file //Todo runtime still isnt created sometimes
+        new Runtime(folderName + ".jar", folderName, folderPath); // create runtime for jar file
         // sleep();
         // new Batch(folderName, folderPath); // create batch file to run jar file with runtime
     }
