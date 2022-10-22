@@ -2,7 +2,6 @@ package main.java.Script;
 
 public class Main {
 
-    public static boolean verbose = false;
     public static void main(String[] args) { 
         Organizer organizer = new Organizer(); // create folder that everything goes inside
         String path = organizer.getPath(); // get the path of the folder
@@ -11,7 +10,7 @@ public class Main {
         // sleep();
         // new Runtime(name + ".jar", name, path); // create runtime for jar file //Todo runtime still isnt created sometimes
         // sleep();
-        // new Batch(setup.topName(), path); // create batch file to run jar file with runtime
+        // new Batch(name, path); // create batch file to run jar file with runtime
     }
 
     public static void sleep() {
