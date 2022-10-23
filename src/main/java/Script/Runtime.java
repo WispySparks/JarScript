@@ -15,31 +15,32 @@ public class Runtime {
     }
 
     private void createRuntime(String jar, String projName, String path) {
-        ProcessBuilder depsBuilder = new ProcessBuilder("cmd.exe", "/c jdeps -s " + path + "\\" + jar);
-        List<String> deps = new ArrayList<>();
-        depsBuilder.redirectError(Redirect.INHERIT);
-        try {
-            Process proc = depsBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                deps.add(line.substring(jar.length()+4));
-            }
-            String libs = "";
-            for (String string : deps) {
-                libs += string + ",";
-            }
-            libs = libs.substring(0, libs.length()-1);
-            System.out.println(jar + " Dependencies: " + libs);
-            File runtime = new File(projName+"-Runtime");
-            if (!runtime.exists()) {
+        File runtime = new File(path + "\\" + projName + "-Runtime");
+        if (!runtime.exists()) {
+            ProcessBuilder depsBuilder = new ProcessBuilder("cmd.exe", "/c jdeps -s " + path + "\\" + jar);
+            List<String> deps = new ArrayList<>();
+            depsBuilder.redirectError(Redirect.INHERIT);
+            try {
+                Process proc = depsBuilder.start();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    deps.add(line.substring(jar.length()+4));
+                }
+                String libs = "";
+                for (String string : deps) {
+                    libs += string + ",";
+                }
+                libs = libs.substring(0, libs.length()-1);
+                System.out.println(jar + " Dependencies: " + libs);
                 String runtimePath = "\"" + path + "\\" + projName + "-Runtime\"";
                 ProcessBuilder runtimeBuilder = new ProcessBuilder("cmd.exe", "/c jlink --output " + runtimePath + " --add-modules " + libs);
                 runtimeBuilder.redirectError(Redirect.INHERIT);
                 runtimeBuilder.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            while (!runtime.exists());
         }
     }
 }

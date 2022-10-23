@@ -8,15 +8,7 @@ public class Main {
         String folderName = organizer.getName(); // get name of project
         new Jar(folderPath, folderName); // create jar file
         new Runtime(folderName + ".jar", folderName, folderPath); // create runtime for jar file
-        // sleep();
-        // new Batch(folderName, folderPath); // create batch file to run jar file with runtime
+        new Batch(folderName, folderPath); // create batch file to run jar file with runtime
     }
 
-    public static void sleep() {
-        try {
-            Thread.sleep(500);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
 }

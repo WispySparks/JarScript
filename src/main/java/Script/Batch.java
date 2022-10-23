@@ -2,6 +2,7 @@ package main.java.Script;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Batch {
     
@@ -10,19 +11,18 @@ public class Batch {
     }
 
     private void createBatch(String projName, String path) {
-        File batch = new File(path + "\\" + projName + ".bat");
+        File batchFile = new File(path + "\\" + projName + ".bat");
         String batchPath = "\"%~dp0"+projName+"-runtime\\bin\\java.exe\"";
         try {
-            if (!batch.exists()) {
-                batch.createNewFile();
-                FileWriter writer = new FileWriter(batch);
+            if (!batchFile.exists()) {
+                batchFile.createNewFile();
+                FileWriter writer = new FileWriter(batchFile);
                 writer.write("ECHO OFF" + "\r\n");
                 writer.write("start cmd /c " + batchPath + " -jar " + projName +".jar");
                 writer.close();
-                System.out.println("Batch File Created Successfully");
             }
-        } catch (Exception e) {
-            System.out.println("Batch Exception: " + e);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
