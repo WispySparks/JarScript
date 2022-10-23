@@ -31,11 +31,11 @@ public class Runtime {
                 for (String string : deps) {
                     libs += string + ",";
                 }
-                libs = libs.substring(0, libs.length()-1);
+                if (libs.length() > 0) libs = libs.substring(0, libs.length()-1);
                 System.out.println(jar + " Dependencies: " + libs);
                 String runtimePath = "\"" + path + "\\" + projName + "-Runtime\"";
                 ProcessBuilder runtimeBuilder = new ProcessBuilder("cmd.exe", "/c jlink --output " + runtimePath + " --add-modules " + libs);
-                runtimeBuilder.redirectError(Redirect.INHERIT);
+                runtimeBuilder.inheritIO();
                 runtimeBuilder.start();
             } catch (IOException e) {
                 e.printStackTrace();

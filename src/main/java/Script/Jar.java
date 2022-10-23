@@ -3,7 +3,6 @@ package main.java.Script;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
 import java.util.Scanner;
 
 public class Jar {
@@ -18,7 +17,7 @@ public class Jar {
             File manifest = createManifest(path);
             ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c jar -c -v -f " +  
             "\"" + jarFile.getAbsolutePath() + "\" -m \"" + manifest.getAbsolutePath() + "\" -C bin .");
-            builder.redirectError(Redirect.INHERIT);
+            builder.inheritIO();
             try {
                 builder.start();    // create the jar file
             } catch (IOException e) {
