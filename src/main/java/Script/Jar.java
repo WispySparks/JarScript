@@ -34,8 +34,11 @@ public class Jar {
         try {
             file = File.createTempFile("mf-", ".txt");
             FileWriter writer = new FileWriter(file); // write everything to it
-            System.out.println("Input main class path. e.g. com.example.package.MainClass");
-            writer.write("Manifest-Version: 1.0" + "\r\n" + "Main-Class: " + s.nextLine() + "\r\n");
+            System.out.println("Input main class path or leave blank for no main class. e.g. com.example.package.MainClass");
+            String mc = s.nextLine();
+            if (!mc.isEmpty()) {
+                writer.write("Manifest-Version: 1.0" + "\r\n" + "Main-Class: " + mc + "\r\n");
+            }
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
