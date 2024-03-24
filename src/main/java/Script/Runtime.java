@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Runtime {
 
-    Runtime (String jar, String projName, String path) {
+    Runtime(String jar, String projName, String path) {
         createRuntime(jar, projName, path);
     }
 
@@ -43,4 +43,5 @@ public class Runtime {
             while (!runtime.exists());
         }
     }
+    
 }

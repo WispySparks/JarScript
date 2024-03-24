@@ -5,8 +5,8 @@ import java.net.URISyntaxException;
 
 public class Organizer {
 
-    File parentDirectory;
-    String path;
+    private File parentDirectory;
+    private String path;
 
     Organizer() {
         createFolder();
@@ -33,4 +33,5 @@ public class Organizer {
     public String getPath() {
         return path;
     }
+    
 }
