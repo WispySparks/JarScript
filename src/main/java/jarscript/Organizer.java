@@ -1,4 +1,4 @@
-package main.java.Script;
+package jarscript;
 
 import java.io.File;
 import java.net.URISyntaxException;

@@ -1,4 +1,4 @@
-package main.java.Script;
+package jarscript;
 
 import java.io.BufferedReader;
 import java.io.File;

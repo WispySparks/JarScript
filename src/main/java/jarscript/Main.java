@@ -1,4 +1,4 @@
-package main.java.Script;
+package jarscript;
 
 public class Main {
 
